@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ @charset "utf-8";
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+ @import "bootstrap-4-spacers";
+ @import 'bootstrap-datetimepicker';

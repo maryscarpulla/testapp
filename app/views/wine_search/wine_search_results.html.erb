@@ -1,0 +1,39 @@
+<h1>Results</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Image</th>
+        <th>Wine Name</th>
+        <th>Year</th>
+        <th>Winery</th>
+        <th>Varietal</th>
+      </tr>
+
+      <% @wines_from_api.each do |wine_hash| %>
+      <!-- Include the html here that you want for each wine entry -->
+      <tr>
+        <td> <img src = "<%= wine_hash["image"] %>"></td>
+        <td> <%= wine_hash["name"] %></td>
+        <td> <%= wine_hash["vintage"] %></td>
+        <td> <%= wine_hash["winery"] %></td>
+        <td> <%= wine_hash["varietal"] %></td>
+        <td><a href="/my_wines/ new" class="btn btn-primary">Add</a></td>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<!--
+<tr>
+<td><img src ="<%= @image1 %>"</td>
+<td><%= @winename1 %></td>
+<td><%= @year1 %></td>
+<td><%= @winery1 %></td>
+<td><%= @varietal1 %></td>
+<td><a href="/my_wines/new" class="btn btn-primary">Add</a></td>
+</tr>
+</table>
+</div> -->
