@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h3>Mycellarwine #<%= @mycellarwine.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Wine name</dt>
+      <dd><%= @mycellarwine.wine_name %></dd>
+
+      <dt>Year</dt>
+      <dd><%= @mycellarwine.year %></dd>
+
+      <dt>Price</dt>
+      <dd><%= @mycellarwine.price %></dd>
+
+      <dt>Varietal</dt>
+      <dd><%= @mycellarwine.varietal_id %></dd>
+
+      <dt>Winery</dt>
+      <dd><%= @mycellarwine.winery %></dd>
+
+      <dt>Bucket list wine</dt>
+      <dd><%= @mycellarwine.bucket_list_wine %></dd>
+
+      <dt>Image</dt>
+      <dd><%= @mycellarwine.image_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/mycellarwines" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/mycellarwines/<%= @mycellarwine.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_mycellarwine/<%= @mycellarwine.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

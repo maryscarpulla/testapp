@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @suggested_wine.errors.any? %>
+  <% @suggested_wine.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Suggested Wine</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_suggested_wine" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for wine_id -->
+      <div class="form-group">
+        <label for="wine_id" class="control-label">
+          Wine
+        </label>
+
+        <input type="text" id="wine_id" name="wine_id" placeholder="Wine" class="form-control" value="<%= @suggested_wine.wine_id %>">
+      </div>
+
+      <!-- Label and input for user_id_from -->
+      <div class="form-group">
+        <label for="user_id_from" class="control-label">
+          User id from
+        </label>
+
+        <input type="text" id="user_id_from" name="user_id_from" placeholder="User id from" class="form-control" value="<%= @suggested_wine.user_id_from %>">
+      </div>
+
+      <!-- Label and input for user_id_to -->
+      <div class="form-group">
+        <label for="user_id_to" class="control-label">
+          User id to
+        </label>
+
+        <input type="text" id="user_id_to" name="user_id_to" placeholder="User id to" class="form-control" value="<%= @suggested_wine.user_id_to %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Suggested Wine
+      </button>
+      or
+      <a href="/suggested_wines">Cancel</a>
+    </form>
+  </div>
+</div>

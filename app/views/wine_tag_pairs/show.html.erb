@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Wine Tag Pair #<%= @wine_tag_pair.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Wine</dt>
+      <dd><%= @wine_tag_pair.wine_id %></dd>
+
+      <dt>Tag</dt>
+      <dd><%= @wine_tag_pair.tag_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/wine_tag_pairs" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/wine_tag_pairs/<%= @wine_tag_pair.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_wine_tag_pair/<%= @wine_tag_pair.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

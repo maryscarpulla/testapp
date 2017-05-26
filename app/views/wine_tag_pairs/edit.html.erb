@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @wine_tag_pair.errors.any? %>
+  <% @wine_tag_pair.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Wine Tag Pair #<%= @wine_tag_pair.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_wine_tag_pair/<%= @wine_tag_pair.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for wine_id -->
+      <div class="form-group">
+        <label for="wine_id" class="control-label">
+          Wine
+        </label>
+
+        <input type="text" id="wine_id" name="wine_id" placeholder="Wine" class="form-control" value="<%= @wine_tag_pair.wine_id %>">
+      </div>
+
+      <!-- Label and input for tag_id -->
+      <div class="form-group">
+        <label for="tag_id" class="control-label">
+          Tag
+        </label>
+
+        <input type="text" id="tag_id" name="tag_id" placeholder="Tag" class="form-control" value="<%= @wine_tag_pair.tag_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Wine Tag Pair
+      </button>
+      or
+      <a href="/wine_tag_pairs/<%= @wine_tag_pair.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Suggested wines
+    <a href="/suggested_wines/new" class="btn btn-lg btn-success">New Suggested wine</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Wine</th>
+        <th>User id from</th>
+        <th>User id to</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @suggested_wines.each do |suggested_wine| %>
+      <tr>
+        <td><%= suggested_wine.wine_id %></td>
+        <td><%= suggested_wine.user_id_from %></td>
+        <td><%= suggested_wine.user_id_to %></td>
+        <td>
+          <a href="/suggested_wines/<%= suggested_wine.id %>" class="btn btn-primary">Show</a>
+          <a href="/suggested_wines/<%= suggested_wine.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_suggested_wine/<%= suggested_wine.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

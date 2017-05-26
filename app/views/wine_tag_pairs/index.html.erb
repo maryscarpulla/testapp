@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Wine tag pairs
+    <a href="/wine_tag_pairs/new" class="btn btn-lg btn-success">New Wine tag pair</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Wine</th>
+        <th>Tag</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @wine_tag_pairs.each do |wine_tag_pair| %>
+      <tr>
+        <td><%= wine_tag_pair.wine_id %></td>
+        <td><%= wine_tag_pair.tag_id %></td>
+        <td>
+          <a href="/wine_tag_pairs/<%= wine_tag_pair.id %>" class="btn btn-primary">Show</a>
+          <a href="/wine_tag_pairs/<%= wine_tag_pair.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_wine_tag_pair/<%= wine_tag_pair.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
