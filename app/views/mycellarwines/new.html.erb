@@ -37,7 +37,7 @@
       <!-- Label and input for wine_name -->
       <div class="form-group">
         <label for="wine_name" class="control-label">
-          Wine name
+          Wine Name
         </label>
 
         <input type="text" id="wine_name" name="wine_name" placeholder="Wine name" class="form-control" value="<%= @mycellarwine.wine_name %>">
@@ -58,7 +58,7 @@
           Price
         </label>
 
-        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
+        <input type="integer" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
       </div>
 
       <!-- Label and input for varietal_id -->
@@ -88,17 +88,25 @@
       </div>
 
       <!-- Label and input for image_id -->
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="image_id" class="control-label">
           Image
         </label>
 
         <input type="text" id="image_id" name="image_id" placeholder="Image" class="form-control" value="<%= @mycellarwine.image_id %>">
-      </div>
+      </div> -->
 
-      <button class="btn btn-success">
-        Create Mycellarwine
-      </button>
+
+      <div class="form-group">
+          <label for="winepicture">Upload label photo</label>
+          <input type="file" id="winepicture">
+          <p class="help-block">Upload a photo of the wine label.</p>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-success"> Add to My Cellar </button>
+
       or
       <a href="/mycellarwines">Cancel</a>
     </form>
