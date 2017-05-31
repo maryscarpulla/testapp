@@ -7,7 +7,7 @@ class CreateMycellarwines < ActiveRecord::Migration
       t.integer :varietal_id
       t.string :winery
       t.boolean :bucket_list_wine
-      t.integer :image_id
+      t.string :image_id
       t.integer :user_id
 
       t.timestamps

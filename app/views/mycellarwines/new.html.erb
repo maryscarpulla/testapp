@@ -30,7 +30,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_mycellarwine" method="post">
+    <form action="/create_mycellarwine" method="post" class="form-horizontal" enctype="multipart/form-data">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -58,7 +58,7 @@
           Price
         </label>
 
-        <input type="integer" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
       </div>
 
       <!-- Label and input for varietal_id -->
@@ -100,8 +100,8 @@
 
 
       <div class="form-group">
-          <label for="winepicture">Upload label photo</label>
-          <input type="file" id="winepicture">
+          <label for="image_id">Upload label photo</label>
+          <input type="file" id="image_id" name="image_id" class="form-control" value="<%= @mycellarwine.image_id %>">
           <p class="help-block">Upload a photo of the wine label.</p>
         </div>
 

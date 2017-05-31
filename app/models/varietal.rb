@@ -1,3 +1,3 @@
 class Varietal < ApplicationRecord
-  has_many :wines, :class_name => "Mycellarwine", :dependent => :nullify
+  has_many :mycellarwines, :class_name => "Mycellarwine", :dependent => :nullify
 end

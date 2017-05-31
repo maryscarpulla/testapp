@@ -1,20 +1,17 @@
 namespace :slurp do
-  desc "TODO"
-  task winevarietals: :environment do
+  desc "Add a starter set of varietals"
+  task varietals: :environment do
 
     require "csv"
-    csv_text = File.read(Rails.root.join("lib", "csvs", "WineVarietals.csv"))
-    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+    csv_text = File.read(Rails.root.join("lib", "csvs", "varietals.csv"))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1:utf-8")
     csv.each do |row|
-      t = Winevarietal.new
-      t.varietal = row["varietal"]
+      t = Varietal.new
+      t.varietal_name = row["Varietal"]
       t.save
-      puts "#{t.varietal} saved"
-      
+      puts "#{t.varietal_name} saved"
+
     end
 
-
-
   end
-
 end

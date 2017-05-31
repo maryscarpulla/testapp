@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @mycellarwine.errors.any? %>
-  <% @mycellarwine.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @mycellarwine.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -42,7 +42,7 @@
           Price
         </label>
 
-        <input type="integer" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
       </div>
 
       <!-- Label and input for varietal_id -->
@@ -51,7 +51,9 @@
           Varietal
         </label>
 
-        <input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal" class="form-control" value="<%= @mycellarwine.varietal_id %>">
+        <!-- <input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal" class="form-control" value="<%= @mycellarwine.varietal_id %>">
+         -->
+        <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name), :class => "form-control") %>
       </div>
 
       <!-- Label and input for winery -->
