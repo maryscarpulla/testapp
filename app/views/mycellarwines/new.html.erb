@@ -69,30 +69,8 @@
           </label>
 
           <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name), :class => "form-control") %>
-
-          <div class="form-group">
-            <form action="/create_varietal" method="post">
-              <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-              <!-- Label and input for varietal_name -->
-              <div class="form-group">
-                <label for="varietal_id" class="control-label">
-                  New Varietal Name
-                </label>
-
-                <input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal name" class="form-control" value="<%= @mycellarwine.varietal_id%>">
-              </div>
-
-              <button class="btn btn-success">
-                Create Varietal
-              </button>
-              or
-              <a href="/varietals">Cancel</a>
-            </form>
-          </div>
-
-
+          <a href="/varietals/new">Add a new varietal</a>
+          <p class="help-block">Varietal doesn't exist? Click the link to add a new varietal and return to add a new wine.</p>
           <!-- Label and input for price -->
           <div class="form-group">
             <label for="price" class="control-label">
@@ -100,6 +78,15 @@
             </label>
 
             <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
+          </div>
+
+          
+          <!-- Label and input for image_id -->
+
+          <div class="form-group">
+            <label for="image_id">Upload label photo</label>
+            <input type="file" id="image_id" name="image_id" class="form-control" value="<%= @mycellarwine.image_id %>">
+            <p class="help-block">Upload a photo of the wine label.</p>
           </div>
 
 
@@ -112,26 +99,11 @@
             </label>
           </div>
 
-          <!-- Label and input for image_id -->
-          <!-- <div class="form-group">
-          <label for="image_id" class="control-label">
-          Image
-        </label>
 
-        <input type="text" id="image_id" name="image_id" placeholder="Image" class="form-control" value="<%= @mycellarwine.image_id %>">
-      </div> -->
+          <button type="submit" class="btn btn-success"> Add to My Cellar </button>
 
-
-      <div class="form-group">
-        <label for="image_id">Upload label photo</label>
-        <input type="file" id="image_id" name="image_id" class="form-control" value="<%= @mycellarwine.image_id %>">
-        <p class="help-block">Upload a photo of the wine label.</p>
+          or
+          <a href="/mycellarwines">Cancel</a>
+        </form>
       </div>
-
-      <button type="submit" class="btn btn-success"> Add to My Cellar </button>
-
-      or
-      <a href="/mycellarwines">Cancel</a>
-    </form>
-  </div>
-</div>
+    </div>
