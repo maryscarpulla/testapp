@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @mycellarwine.errors.any? %>
-  <% @mycellarwine.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @mycellarwine.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 
@@ -24,74 +24,97 @@
   </form>
 
 
-<div class="page-header">
-  <h3>Add a wine manually</h3>
-</div>
+  <div class="page-header">
+    <h3>Add a wine manually</h3>
+  </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <form action="/create_mycellarwine" method="post" class="form-horizontal" enctype="multipart/form-data">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <div class="row">
+    <div class="col-md-12">
+      <form action="/create_mycellarwine" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for wine_name -->
-      <div class="form-group">
-        <label for="wine_name" class="control-label">
-          Wine Name
-        </label>
+        <!-- Label and input for wine_name -->
+        <div class="form-group">
+          <label for="wine_name" class="control-label">
+            Wine Name
+          </label>
 
-        <input type="text" id="wine_name" name="wine_name" placeholder="Wine name" class="form-control" value="<%= @mycellarwine.wine_name %>">
-      </div>
+          <input type="text" id="wine_name" name="wine_name" placeholder="Wine name" class="form-control" value="<%= @mycellarwine.wine_name %>">
+        </div>
 
-      <!-- Label and input for year -->
-      <div class="form-group">
-        <label for="year" class="control-label">
-          Year
-        </label>
+        <!-- Label and input for year -->
+        <div class="form-group">
+          <label for="year" class="control-label">
+            Year
+          </label>
 
-        <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @mycellarwine.year %>">
-      </div>
+          <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @mycellarwine.year %>">
+        </div>
 
-      <!-- Label and input for price -->
-      <div class="form-group">
-        <label for="price" class="control-label">
-          Price
-        </label>
+        <!-- Label and input for winery -->
+        <div class="form-group">
+          <label for="winery" class="control-label">
+            Winery
+          </label>
 
-        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
-      </div>
+          <input type="text" id="winery" name="winery" placeholder="Winery" class="form-control" value="<%= @mycellarwine.winery %>">
+        </div>
 
-      <!-- Label and input for varietal_id -->
-      <div class="form-group">
-        <label for="varietal_id" class="control-label">
-          Varietal
-        </label>
 
-        <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name), :class => "form-control") %>
+        <!-- Label and input for varietal_id -->
+        <div class="form-group">
+          <label for="varietal_id" class="control-label">
+            Varietal
+          </label>
 
-        <!-- <input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal" class="form-control" value="<%= @mycellarwine.varietal_id %>">
-      </div> -->
+          <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name), :class => "form-control") %>
 
-      <!-- Label and input for winery -->
-      <div class="form-group">
-        <label for="winery" class="control-label">
-          Winery
-        </label>
+          <div class="form-group">
+            <form action="/create_varietal" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-        <input type="text" id="winery" name="winery" placeholder="Winery" class="form-control" value="<%= @mycellarwine.winery %>">
-      </div>
+              <!-- Label and input for varietal_name -->
+              <div class="form-group">
+                <label for="varietal_id" class="control-label">
+                  New Varietal Name
+                </label>
 
-      <!-- Label and input for bucket_list_wine -->
-      <div class="checkbox">
-        <label for="bucket_list_wine">
-          <input type="checkbox" id="bucket_list_wine" name="bucket_list_wine" value="1" <%= "checked" if @mycellarwine.bucket_list_wine %>>
-          Bucket list wine
-        </label>
-      </div>
+                <input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal name" class="form-control" value="<%= @mycellarwine.varietal_id%>">
+              </div>
 
-      <!-- Label and input for image_id -->
-      <!-- <div class="form-group">
-        <label for="image_id" class="control-label">
+              <button class="btn btn-success">
+                Create Varietal
+              </button>
+              or
+              <a href="/varietals">Cancel</a>
+            </form>
+          </div>
+
+
+          <!-- Label and input for price -->
+          <div class="form-group">
+            <label for="price" class="control-label">
+              Price
+            </label>
+
+            <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @mycellarwine.price %>">
+          </div>
+
+
+
+          <!-- Label and input for bucket_list_wine -->
+          <div class="checkbox">
+            <label for="bucket_list_wine">
+              <input type="checkbox" id="bucket_list_wine" name="bucket_list_wine" value="1" <%= "checked" if @mycellarwine.bucket_list_wine %>>
+              Bucket list wine
+            </label>
+          </div>
+
+          <!-- Label and input for image_id -->
+          <!-- <div class="form-group">
+          <label for="image_id" class="control-label">
           Image
         </label>
 
@@ -100,14 +123,12 @@
 
 
       <div class="form-group">
-          <label for="image_id">Upload label photo</label>
-          <input type="file" id="image_id" name="image_id" class="form-control" value="<%= @mycellarwine.image_id %>">
-          <p class="help-block">Upload a photo of the wine label.</p>
-        </div>
+        <label for="image_id">Upload label photo</label>
+        <input type="file" id="image_id" name="image_id" class="form-control" value="<%= @mycellarwine.image_id %>">
+        <p class="help-block">Upload a photo of the wine label.</p>
+      </div>
 
-
-
-        <button type="submit" class="btn btn-success"> Add to My Cellar </button>
+      <button type="submit" class="btn btn-success"> Add to My Cellar </button>
 
       or
       <a href="/mycellarwines">Cancel</a>

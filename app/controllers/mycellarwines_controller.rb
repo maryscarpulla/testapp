@@ -1,6 +1,6 @@
 class MycellarwinesController < ApplicationController
   def index
-    @mycellarwines = Mycellarwine.all
+    @mycellarwines = current_user.mycellarwines
 
     render("mycellarwines/index.html.erb")
   end

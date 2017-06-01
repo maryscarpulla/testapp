@@ -9,31 +9,53 @@
         <th>Year</th>
         <th>Winery</th>
         <th>Varietal</th>
+        <th>Price</th>
+        <th>Type</th>
       </tr>
 
       <% @wines_from_api.each do |wine_hash| %>
       <!-- Include the html here that you want for each wine entry -->
       <tr>
-        <td> <img src = "<%= wine_hash["image"] %>"></td>
-        <td> <%= wine_hash["name"] %></td>
-        <td> <%= wine_hash["vintage"] %></td>
-        <td> <%= wine_hash["winery"] %></td>
-        <td> <%= wine_hash["varietal"] %></td>
-        <td><a href="/my_wines/ new" class="btn btn-primary">Add</a></td>
-      </td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+        <form action="/create_mycellarwines" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-<!--
-<tr>
-<td><img src ="<%= @image1 %>"</td>
-<td><%= @winename1 %></td>
-<td><%= @year1 %></td>
-<td><%= @winery1 %></td>
-<td><%= @varietal1 %></td>
-<td><a href="/my_wines/new" class="btn btn-primary">Add</a></td>
-</tr>
-</table>
+          <td> <img src = "<%= wine_hash["image"] %>"></td>
+          <td>
+            <input type="text" id="wine_name" name="wine_name" placeholder="Wine name" class="form-control" value="<%= wine_hash["name"] %>"></td>
+
+            <td> <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= wine_hash["vintage"] %>">
+            </td>
+
+            <td>
+              <input type="text" id="winery" name="winery" placeholder="Winery" class="form-control" value="<%= wine_hash["winery"] %>"> </td>
+              <td>
+
+                <input type="text" id="varietal" name="varietal" placeholder="Varietal" class="form-control" value="<%= wine_hash["varietal"] %>">
+
+              </td>
+              <td>
+                <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= wine_hash["price"] %>">
+              </td>
+              <td> <%= wine_hash["type"] %></td>
+
+              <td><a href="/mywineslist/new" class="btn btn-primary">Add</a></td>
+            </td>
+          </tr>
+
+          <% end %>
+
+        </table>
+      </div>
+
+      <!--
+      <tr>
+      <td><img src ="<%= @image1 %>"</td>
+      <td><%= @winename1 %></td>
+      <td><%= @year1 %></td>
+      <td><%= @winery1 %></td>
+      <td><%= @varietal1 %></td>
+      <td><a href="/my_wines/new" class="btn btn-primary">Add</a></td>
+    </tr>
+  </table>
 </div> -->
