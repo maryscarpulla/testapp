@@ -104,5 +104,13 @@ Rails.application.routes.draw do
   get "/delete_mycellarwine/:id", :controller => "mycellarwines", :action => "destroy"
   #------------------------------
 
+
+  #-----------------------------------------
+  #Routes for the API
+  get "/winesearch/new",:controller => "wine_search", :action => "wine_search_form"
+  get "/search_to_results",:controller => "wine_search", :action => "search_to_results"
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

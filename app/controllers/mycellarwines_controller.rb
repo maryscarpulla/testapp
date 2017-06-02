@@ -1,6 +1,7 @@
 class MycellarwinesController < ApplicationController
   def index
-    @mycellarwines = current_user.mycellarwines
+    # @mycellarwines = current_user.mycellarwines
+    @mycellarwines = Mycellarwine.all
 
     render("mycellarwines/index.html.erb")
   end
@@ -19,7 +20,6 @@ class MycellarwinesController < ApplicationController
 
   def create
     @mycellarwine = Mycellarwine.new
-
     @mycellarwine.wine_name = params[:wine_name]
     @mycellarwine.year = params[:year]
     @mycellarwine.price = params[:price]
