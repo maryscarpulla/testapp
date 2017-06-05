@@ -1,5 +1,5 @@
 class SuggestedWine < ApplicationRecord
-  belongs_to :wine, :class_name => "Mycellarwine"
+  belongs_to :wine, :class_name => "Mycellarwine", :foreign_key => "wine_id"
 belongs_to :user_id_to, :class_name => "User"
 belongs_to :user_id_from, :class_name => "User"
 validates :wine_id, :presence => true

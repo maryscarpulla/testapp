@@ -19,7 +19,6 @@ class SuggestedWinesController < ApplicationController
 
   def create
     @suggested_wine = SuggestedWine.new
-
     @suggested_wine.wine_id = params[:wine_id]
     @suggested_wine.user_id_from = params[:user_id_from]
     @suggested_wine.user_id_to = params[:user_id_to]
