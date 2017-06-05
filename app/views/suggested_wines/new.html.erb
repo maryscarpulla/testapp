@@ -41,10 +41,10 @@
         </label>
 
 
-        <%= select_tag(:user_id_to, options_from_collection_for_select(current_user.mycellarwines, :id, :wine_name), :class => "form-control") %>
+        <%= select_tag(:user_id_to, options_from_collection_for_select(User.all, :id, :name), :class => "form-control") %>
 
-
-        <input type="text" id="user_id_to" name="user_id_to" placeholder="User id to" class="form-control" value="<%= @suggested_wine.user_id_to %>">
+<!--
+        <input type="text" id="user_id_to" name="user_id_to" placeholder="User id to" class="form-control" value="<%= @suggested_wine.user_id_to %>"> -->
       </div>
 
 
