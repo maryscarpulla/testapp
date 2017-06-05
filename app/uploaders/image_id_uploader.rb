@@ -1,6 +1,5 @@
 class ImageIdUploader < CarrierWave::Uploader::Base
 
-  mount_uploader :image_id, Image_id_Uploader
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

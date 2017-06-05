@@ -1,5 +1,6 @@
 class Mycellarwine < ApplicationRecord
 
+  mount_uploader :image_id, ImageIdUploader
 
 
   has_many :reviews, :foreign_key => "wine_id", :dependent => :destroy

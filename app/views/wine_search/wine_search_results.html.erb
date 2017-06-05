@@ -19,9 +19,13 @@
         <form action="/create_mycellarwine" method="post">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <input name="user_id" type = "hidden" value="<%= current_user.id%>">
+
 
           <td> <img src = "<%= wine_hash["image"] %>"></td>
 
+          <!-- <td><input type="text" id="image_id" name="image_id" placeholder="Image" class="form-control" value="<%= wine_hash["image"] %>"></td>
+           -->
           <td><input type="text" id="wine_name" name="wine_name" placeholder="Wine name" class="form-control" value="<%= wine_hash["name"] %>"></td>
 
           <td> <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= wine_hash["vintage"] %>">
@@ -48,6 +52,6 @@
     </tr>
     <% end %>
   </table>
-  
 
-</div>
+
+</div>/
