@@ -34,6 +34,9 @@
         <!-- Hidden input for authenticity token to protect from forgery -->
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+
+          <input name="user_id" type = "hidden" value="<%= current_user.id%>">
+
         <!-- Label and input for wine_name -->
         <div class="form-group">
           <label for="wine_name" class="control-label">

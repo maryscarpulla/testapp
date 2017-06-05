@@ -1,8 +1,8 @@
 class MycellarwinesController < ApplicationController
   def index
     # @mycellarwines = current_user.mycellarwines
-    @mycellarwines = Mycellarwine.all
-
+    @mycellarwines = current_user.mycellarwines
+    @varietals = Varietal.all
     render("mycellarwines/index.html.erb")
   end
 
@@ -27,7 +27,7 @@ class MycellarwinesController < ApplicationController
     @mycellarwine.winery = params[:winery]
     @mycellarwine.bucket_list_wine = params[:bucket_list_wine]
     @mycellarwine.image_id = params[:image_id]
-    @mycellarwine.user_id = params[:user_id]
+    @mycellarwine.user_id = params[:user_id].to_i
 
     save_status = @mycellarwine.save
 
@@ -62,7 +62,7 @@ class MycellarwinesController < ApplicationController
     @mycellarwine.bucket_list_wine = params[:bucket_list_wine]
     @mycellarwine.image_id = params[:image_id]
 
-    @mycellarwine.user_id = params[:user_id]
+    @mycellarwine.user_id = params[:user_id].to_i
     save_status = @mycellarwine.save
 
     if save_status == true

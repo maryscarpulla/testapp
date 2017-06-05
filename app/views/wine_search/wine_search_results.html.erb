@@ -21,6 +21,7 @@
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
           <td> <img src = "<%= wine_hash["image"] %>"></td>
+
           <td><input type="text" id="wine_name" name="wine_name" placeholder="Wine name" class="form-control" value="<%= wine_hash["name"] %>"></td>
 
           <td> <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= wine_hash["vintage"] %>">
@@ -28,23 +29,25 @@
 
           <td> <input type="text" id="winery" name="winery" placeholder="Winery" class="form-control" value="<%= wine_hash["winery"] %>"> </td>
 
+          <!--
           <td><input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal" class="form-control" value="<%= wine_hash["varietal"] %>">
-
-          </td>
-          <td><input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= wine_hash["price"] %>">
-          </td>
-
-          <td> <%= wine_hash["type"] %></td>
+        </td> -->
 
 
+        <td><%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name), :class => "form-control") %>
+          Search result: <%= wine_hash["varietal"] %>
+        </td>
 
-          <td><button class="btn btn-success">
-            Add to My Cellar
-          </button></td>
+        <td><input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= wine_hash["price"] %>">
+        </td>
 
-        </tr>
-        <% end %>
-      </table>
+        <td><button class="btn btn-success">
+          Add to My Cellar
+        </button></td>
+      </form>
+    </tr>
+    <% end %>
+  </table>
+  
 
-
-    </div>
+</div>
