@@ -24,7 +24,7 @@
           Wine
         </label>
 
-        <%= select_tag(:wine_id, options_from_collection_for_select(current_user.mycellarwines, :id, :wine_name), :class => "form-control") %>
+        <%= select_tag(:wine_id, options_from_collection_for_select(current_user.mycellarwines, :id, :wine_name, @suggested_wine.wine_id), :class => "form-control") %>
 
       </div>
 

@@ -14,6 +14,7 @@ class SuggestedWinesController < ApplicationController
 
   def new
     @suggested_wine = SuggestedWine.new
+    @suggested_wine.wine_id = params[:wine_id]
 
     render("suggested_wines/new.html.erb")
   end

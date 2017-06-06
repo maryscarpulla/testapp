@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   devise_for :users
   # Routes for the Suggested_wine resource:
   # CREATE
+  get "/suggested_wines/new/:wine_id", :controller => "suggested_wines", :action => "new"
   get "/suggested_wines/new", :controller => "suggested_wines", :action => "new"
   post "/create_suggested_wine", :controller => "suggested_wines", :action => "create"
 

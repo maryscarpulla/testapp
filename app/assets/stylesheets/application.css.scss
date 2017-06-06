@@ -14,9 +14,43 @@
  *= require_self
  */
 
+
+
  @charset "utf-8";
 
  @import "font-awesome-sprockets";
  @import "font-awesome";
  @import "bootstrap-4-spacers";
  @import 'bootstrap-datetimepicker';
+
+
+ .main-content {
+   width: 960px;
+   margin: auto;
+   border-spacing: 10px;
+ }
+
+ .main-content-cell {
+   vertical-align: top;
+   padding-left: 20px;
+   padding-right: 20px;
+
+   box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.24);
+   transition: all 0.2s ease-in-out;
+ }
+
+ .main-content-cell:hover {
+   box-shadow: 0 10px 20px rgba(204, 242, 255,.3), 0 6px 6px rgba(0,0,0,0.23);
+ }
+
+ .main-content-cell-heading {
+   font-size: 18px;
+   text-align: center;
+ }
+
+
+ .top-cover {
+   background: url("tuscany.png") no-repeat center bottom;
+   background-size: cover;
+   height: 440x;
+ }

@@ -97,7 +97,7 @@
 
     <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-    <a href="/mycellarwiness" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <a href="/mycellarwines" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
     <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#wines_filters">
       Show Filters
@@ -109,14 +109,14 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Image</th>
+        <th>Label</th>
         <th>Wine Name</th>
         <th>Year</th>
         <th>Price</th>
         <th>Varietal</th>
         <th>Winery</th>
         <th>Rating</th>
-        <th>Bucket List</th>
+        <th>Bucket List?</th>
         <th>Actions</th>
       </tr>
 
@@ -125,7 +125,7 @@
         <td><img src = "<%= mycellarwine.image_id %>" class = "img-responsive"></td>
         <td><%= mycellarwine.wine_name %></td>
         <td><%= mycellarwine.year %></td>
-        <td><%= mycellarwine.price %></td>
+        <td>$<%= mycellarwine.price %></td>
         <td><%= mycellarwine.varietal.varietal_name %></td>
         <td><%= mycellarwine.winery %></td>
         <% if mycellarwine.reviews.count >0 %>
@@ -144,11 +144,11 @@
 
         <td>
 
-          <a href="/mycellarwines/<%= mycellarwine.id %>" class="btn btn-primary">Show</a>
-          <a href="/mycellarwines/<%= mycellarwine.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_mycellarwine/<%= mycellarwine.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          <a href="/reviews/new/<%= mycellarwine.id %>" class="btn btn-success">Add a Review</a>
-
+          <a href="/suggested_wines/new/<%= mycellarwine.id %>" class="btn btn-info  btn-sm">Suggest Wine</a>
+          <a href="/reviews/new/<%= mycellarwine.id %>" class="btn btn-default  btn-sm">Add Review</a>
+          <a href="/mycellarwines/<%= mycellarwine.id %>" class="btn btn-primary btn-xs">Show</a>
+          <a href="/mycellarwines/<%= mycellarwine.id %>/edit" class="btn btn-warning btn-xs">Edit</a>
+          <a href="/delete_mycellarwine/<%= mycellarwine.id %>" class="btn btn-danger btn-xs" rel="nofollow">Delete</a>
 
 
         </td>

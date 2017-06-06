@@ -1,18 +1,21 @@
 <div class="page-header">
-  <h3>Mycellarwine #<%= @mycellarwine.id %></h3>
+  <h3><%= @mycellarwine.wine_name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Wine name</dt>
+      <dt></dt>
+      <dd><img src = "<%= @mycellarwine.image_id %>"></dd>
+
+      <dt>Wine Name</dt>
       <dd><%= @mycellarwine.wine_name %></dd>
 
       <dt>Year</dt>
       <dd><%= @mycellarwine.year %></dd>
 
       <dt>Price</dt>
-      <dd><%= @mycellarwine.price %></dd>
+      <dd>$<%= @mycellarwine.price %></dd>
 
       <dt>Varietal</dt>
       <dd><%= @mycellarwine.varietal.varietal_name%></dd>
@@ -21,10 +24,20 @@
       <dd><%= @mycellarwine.winery %></dd>
 
       <dt>Bucket list wine</dt>
-      <dd><%= @mycellarwine.bucket_list_wine %></dd>
+      <dd><% if @mycellarwine.bucket_list_wine == true %></td>
+      <td>Yes
+      <%else%>
+      <td>No</td>
+      <%end%></dd>
 
-      <dt>Image</dt>
-      <dd><img src = "<%= @mycellarwine.image_id %>"></dd>
+
+      <dt>Review</dt>
+      <dd>  <% if @mycellarwine.reviews.count >0 %>
+        <td><%= @mycellarwine.reviews.first.review_full_text %></td>
+        <% else %>
+        <td></td>
+        <%end%>
+      </dd>
 
     </dl>
 

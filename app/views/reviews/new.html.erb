@@ -21,19 +21,18 @@
       <!-- Label and input for stars -->
       <div class="form-group">
         <label for="stars" class="control-label">
-          Stars
+          Rating
         </label>
-
-        <input type="text" id="stars" name="stars" placeholder="Stars" class="form-control" value="<%= @review.stars %>">
+        <input type="text" id="stars" name="stars" placeholder="Please enter a rating from 1 to 10" class="form-control" value="<%= @review.stars %>">
       </div>
 
       <!-- Label and input for review_full_text -->
       <div class="form-group">
         <label for="review_full_text" class="control-label">
-          Review full text
+          Review
         </label>
 
-        <input type="text" id="review_full_text" name="review_full_text" placeholder="Review full text" class="form-control" value="<%= @review.review_full_text %>">
+        <input type="text" id="review_full_text" name="review_full_text" placeholder="What did you think of the wine?" class="form-control" value="<%= @review.review_full_text %>">
       </div>
 
       <!-- Label and input for user_id -->
@@ -49,19 +48,13 @@
           Wine
         </label>
         <%= select_tag(:wine_id, options_from_collection_for_select(current_user.mycellarwines, :id, :wine_name, @review.wine_id), :class => "form-control") %>
-<select>
-<option>
-  <selected>
-</select>
 
 
+          <button class="btn btn-success">
+            Create Review
+          </button>
+          or
+          <a href="/reviews">Cancel</a>
+        </form>
       </div>
-
-      <button class="btn btn-success">
-        Create Review
-      </button>
-      or
-      <a href="/reviews">Cancel</a>
-    </form>
-  </div>
-</div>
+    </div>

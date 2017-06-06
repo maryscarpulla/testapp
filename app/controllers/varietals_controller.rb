@@ -45,25 +45,26 @@ class VarietalsController < ApplicationController
   end
 
   def update
-    @varietal = Varietal.find(params[:id])
+  @varietal = Varietal.find(params[:id])
 
-    @varietal.varietal_name = params[:varietal_name]
+  @varietal.varietal_name = params[:varietal_name]
 
-    save_status = @varietal.save
+  save_status = @varietal.save
 
-    if save_status == true
-      referer = URI(request.referer).path
+  if save_status == true
+    referer = URI(request.referer).path
 
-      case referer
-      when "/varietals/#{@varietal.id}/edit", "/update_varietal"
-        redirect_to("/varietals/#{@varietal.id}", :notice => "Varietal updated successfully.")
-      else
-        redirect_back(:fallback_location => "/", :notice => "Varietal updated successfully.")
-      end
+    case referer
+    when "/varietals/#{@varietal.id}/edit", "/update_varietal"
+      redirect_to("/varietals/#{@varietal.id}", :notice => "Varietal updated successfully.")
     else
-      render("varietals/edit.html.erb")
+      redirect_back(:fallback_location => "/", :notice => "Varietal updated successfully.")
     end
+  else
+    render("varietals/edit.html.erb")
   end
+end
+
 
   def destroy
     @varietal = Varietal.find(params[:id])

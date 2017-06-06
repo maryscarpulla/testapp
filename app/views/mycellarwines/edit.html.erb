@@ -52,41 +52,63 @@
         </label>
 
         <!-- <input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal" class="form-control" value="<%= @mycellarwine.varietal_id %>">
-         -->
-        <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name, @mycellarwine.varietal_id), :class => "form-control") %>
-      </div>
+      -->
+      <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name, @mycellarwine.varietal_id), :class => "form-control") %>
+    </div>
 
-      <!-- Label and input for winery -->
-      <div class="form-group">
-        <label for="winery" class="control-label">
-          Winery
-        </label>
+    <!-- Label and input for winery -->
+    <div class="form-group">
+      <label for="winery" class="control-label">
+        Winery
+      </label>
 
-        <input type="text" id="winery" name="winery" placeholder="Winery" class="form-control" value="<%= @mycellarwine.winery %>">
-      </div>
+      <input type="text" id="winery" name="winery" placeholder="Winery" class="form-control" value="<%= @mycellarwine.winery %>">
+    </div>
 
-      <!-- Label and input for bucket_list_wine -->
-      <div class="checkbox">
-        <label for="bucket_list_wine">
-          <input type="checkbox" id="bucket_list_wine" name="bucket_list_wine" value="1" <%= "checked" if @mycellarwine.bucket_list_wine %>>
-          Bucket list wine
-        </label>
-      </div>
+    <!-- Label and input for bucket_list_wine -->
+    <div class="checkbox">
+      <label for="bucket_list_wine">
+        <input type="checkbox" id="bucket_list_wine" name="bucket_list_wine" value="1" <%= "checked" if @mycellarwine.bucket_list_wine %>>
+        Bucket list wine
+      </label>
+    </div>
 
-      <!-- Label and input for image_id -->
-      <div class="form-group">
-        <label for="image_id" class="control-label">
-          Image
-        </label>
+    <!-- Label and input for image_id -->
+    <!-- <div class="form-group">
+    <label for="image_id" class="control-label">
+    Image
+  </label>
 
-        <input type="text" id="image_id" name="image_id" placeholder="Image" class="form-control" value="<%= @mycellarwine.image_id %>">
-      </div>
+  <input type="text" id="image_id" name="image_id" placeholder="Image" class="form-control" value="<%= @mycellarwine.image_id %>">
+</div> -->
 
-      <button class="btn btn-warning">
-        Update Mycellarwine
-      </button>
-      or
-      <a href="/mycellarwines/<%= @mycellarwine.id %>">Cancel</a>
-    </form>
-  </div>
+<div class="form-group">
+  <label for="image_id">Update label photo</label>
+  <input type="file" id="image_id" name="image_id" class="form-control">
+  <p class="help-block">Upload a new photo of the wine label.</p>
+</div>
+
+<div class="form-group">
+  <label for="review_full_text" class="control-label">
+    Review
+  </label>
+  <dd>  <% if @mycellarwine.reviews.count >0 %>
+
+    <input type="text" id="review_full_text" name="review_full_text" placeholder="Review full text" class="form-control" value="<%= @mycellarwine.reviews.first.review_full_text %>">
+    <% else %>
+    <td>
+      You haven't added a review.
+      <a href="/reviews/new/<%=@mycellarwine.id %>" class="btn btn-success">Add a Review</a>
+    </td>
+    <%end%>
+  </dd>
+</div>
+
+  <button class="btn btn-warning">
+    Update Mycellarwine
+  </button>
+  or
+  <a href="/mycellarwines/<%= @mycellarwine.id %>">Cancel</a>
+</form>
+</div>
 </div>
