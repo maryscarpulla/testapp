@@ -1,18 +1,12 @@
 class MycellarwinesController < ApplicationController
 
-  before_action :current_user_must_be_mycellarwine_user, :only => [:edit, :update, :destroy]
-
-  def current_user_must_be_mycellarwine_user
-    mycellarwine = Mycellarwine.find(params[:id])
-
-    unless current_user == mycellarwine.user
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
-
   def index
     # @mycellarwines = current_user.mycellarwines
-    @mycellarwines = current_user.mycellarwines
+
+    @q = current_user.mycellarwines.ransack(params[:q])
+    @mycellarwines = @q.result(:distinct => true).includes(:user, :reviews, :suggested_wines, :varietal).page(params[:page]).per(10)
+
+
     @varietals = Varietal.all
     render("mycellarwines/index.html.erb")
   end
@@ -33,7 +27,8 @@ class MycellarwinesController < ApplicationController
 
   def show
     @mycellarwine = Mycellarwine.find(params[:id])
-
+    @suggested_wine = SuggestedWine.new
+    @review = Review.new
     render("mycellarwines/show.html.erb")
   end
 
@@ -52,7 +47,7 @@ class MycellarwinesController < ApplicationController
     @mycellarwine.winery = params[:winery]
     @mycellarwine.bucket_list_wine = params[:bucket_list_wine]
 
-if params[:image_id]
+    if params[:image_id]
       @mycellarwine.image_id = params[:image_id]
     else
       @mycellarwine.remote_image_id_url = params[:remote_image_id_url]
