@@ -1,5 +1,15 @@
 class MycellarwinesController < ApplicationController
 
+  before_action :current_user_must_be_mycellarwine_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_mycellarwine_user
+    mycellarwine = Mycellarwine.find(params[:id])
+
+    unless current_user == mycellarwine.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     # @mycellarwines = current_user.mycellarwines
     @mycellarwines = current_user.mycellarwines
