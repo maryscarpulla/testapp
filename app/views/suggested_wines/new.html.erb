@@ -40,7 +40,6 @@
           Select a friend to share wine with
         </label>
 
-
         <%= select_tag(:user_id_to, options_from_collection_for_select(User.all, :id, :name), :class => "form-control") %>
 
 <!--

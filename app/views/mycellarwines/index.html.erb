@@ -128,16 +128,26 @@
         <td><%= mycellarwine.price %></td>
         <td><%= mycellarwine.varietal.varietal_name %></td>
         <td><%= mycellarwine.winery %></td>
-        <td><%= mycellarwine.reviews %></td>
-  
-        <td><%= mycellarwine.bucket_list_wine %></td>
+        <% if mycellarwine.reviews.count >0 %>
+        <td><%= mycellarwine.reviews.first.stars %></td>
+        <% else %>
+        <td></td>
+        <%end%>
+
+        <% if mycellarwine.bucket_list_wine == true %></td>
+        <td>Yes
+        <%else%>
+        <td>No</td>
+        <%end%>
+        <!--
+        <td><%= mycellarwine.bucket_list_wine %></td> -->
 
         <td>
 
           <a href="/mycellarwines/<%= mycellarwine.id %>" class="btn btn-primary">Show</a>
           <a href="/mycellarwines/<%= mycellarwine.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_mycellarwine/<%= mycellarwine.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          <a href="/reviews/new" class="btn btn-success">Add a Review</a>
+          <a href="/reviews/new/<%= mycellarwine.id %>" class="btn btn-success">Add a Review</a>
 
 
 

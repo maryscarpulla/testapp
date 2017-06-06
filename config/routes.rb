@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   # Routes for the Review resource:
   # CREATE
+  get "/reviews/new/:wine_id", :controller => "reviews", :action => "new"
   get "/reviews/new", :controller => "reviews", :action => "new"
   post "/create_review", :controller => "reviews", :action => "create"
 

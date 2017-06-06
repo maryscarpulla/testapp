@@ -10,7 +10,7 @@
         <th>Winery</th>
         <th>Varietal</th>
         <th>Price</th>
-        <th>Type</th>
+        <th>Bucket List?</th>
       </tr>
 
       <% @wines_from_api.each do |wine_hash| %>
@@ -35,26 +35,23 @@
 
         <td> <input type="text" id="winery" name="winery" placeholder="Winery" class="form-control" value="<%= wine_hash["winery"] %>"> </td>
 
+        <td><input type="text" id="varietal_name" name="varietal_name" placeholder="Varietal" class="form-control" value="<%= wine_hash["varietal"] %>">
+        </td>
+
         <!--
-        <td><input type="text" id="varietal_id" name="varietal_id" placeholder="Varietal" class="form-control" value="<%= wine_hash["varietal"] %>">
+        <td><%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name), :class => "form-control") %>
+        Search result: <%= wine_hash["varietal"] %>
       </td> -->
 
 
-      <td><%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name), :class => "form-control") %>
-        Search result: <%= wine_hash["varietal"] %>
-      </td>
 
       <td><input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= wine_hash["price"] %>">
       </td>
 
-      <div class="checkbox">
-        <label for="bucket_list_wine">
-          <input type="checkbox" id="bucket_list_wine" name="bucket_list_wine" value="1" <%= "checked" if @mycellarwine.bucket_list_wine %>>
-          Bucket list wine
-        </label>
-      </div>
-
-
+      <td>
+        <input type="checkbox" id="bucket_list_wine" name="bucket_list_wine">
+      </td>
+      
       <td><button class="btn btn-success">
         Add to My Cellar
       </button></td>

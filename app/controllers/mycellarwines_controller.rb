@@ -5,8 +5,6 @@ class MycellarwinesController < ApplicationController
 
     @q = current_user.mycellarwines.ransack(params[:q])
     @mycellarwines = @q.result(:distinct => true).includes(:user, :reviews, :suggested_wines, :varietal).page(params[:page]).per(10)
-
-
     @varietals = Varietal.all
     @reviews = Review.all
 
@@ -45,8 +43,22 @@ class MycellarwinesController < ApplicationController
     @mycellarwine.wine_name = params[:wine_name]
     @mycellarwine.year = params[:year]
     @mycellarwine.price = params[:price]
-    @mycellarwine.varietal_id = params[:varietal_id]
-    @mycellarwine.winery = params[:winery]
+
+    if params[:varietal_id] != nil # the user has selected from existing varietals
+      @mycellarwine.varietal_id = params[:varietal_id]
+    else # we only have a varietal name
+      existing_varietal = Varietal.find_by(:varietal_name => params[:varietal_name])
+      if existing_varietal != nil
+        @mycellarwine.varietal_id = existing_varietal.id
+      else
+        new_varietal = Varietal.new
+        new_varietal.varietal_name = params[:varietal_name]
+        new_varietal.save
+        @mycellarwine.varietal_id = new_varietal.id
+      end
+    end
+
+  @mycellarwine.winery = params[:winery]
     @mycellarwine.bucket_list_wine = params[:bucket_list_wine]
 
     if params[:image_id]

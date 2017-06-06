@@ -1,6 +1,7 @@
 class SuggestedWinesController < ApplicationController
   def index
-    @suggested_wines = SuggestedWine.all
+    @suggested_wines = SuggestedWine.where(:user_id_to => current_user.id)
+
 
     render("suggested_wines/index.html.erb")
   end

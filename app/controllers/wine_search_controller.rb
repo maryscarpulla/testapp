@@ -21,8 +21,11 @@ class WineSearchController < ApplicationController
     @wines_from_api = parsed_data["wines"]
 
 
-    render("wine_search_results.html.erb")
-
-
+    if @wines_from_api != nil
+      render("wine_search_results.html.erb")
+    else
+      redirect_back(:fallback_location => "/mycellarwines/new", :notice => "No search results, please add wine manually")
+    end
   end
+
 end

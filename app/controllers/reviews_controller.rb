@@ -13,6 +13,8 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @review.wine_id = params[:wine_id]
+
 
     render("reviews/new.html.erb")
   end
