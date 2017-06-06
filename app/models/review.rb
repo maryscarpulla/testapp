@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  belongs_to :wine, :class_name => "Mycellarwine"
+  belongs_to :wine
   belongs_to :user
   validates :user_id, :presence => true
   validates :review_full_text, :presence => true

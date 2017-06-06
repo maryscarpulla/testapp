@@ -8,13 +8,15 @@ class MycellarwinesController < ApplicationController
 
 
     @varietals = Varietal.all
+    @reviews = Review.all
+
     render("mycellarwines/index.html.erb")
   end
 
   def bucket
     # @mycellarwine = current_user.mycellarwines
     # @mycellarwine.wine_name = params[:wine_name]
-    # @mycellarwine.year = params[:year]
+    # @mycellarwine.year w= params[:year]
     # @mycellarwine.price = params[:price]
     # @mycellarwine.varietal_id = params[:varietal_id]
     # @mycellarwine.winery = params[:winery]
