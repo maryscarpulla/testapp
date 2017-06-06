@@ -8,7 +8,7 @@ class MycellarwinesController < ApplicationController
   end
 
   def bucket
-    @mycellarwine = current_user.mycellarwines
+    # @mycellarwine = current_user.mycellarwines
     # @mycellarwine.wine_name = params[:wine_name]
     # @mycellarwine.year = params[:year]
     # @mycellarwine.price = params[:price]
@@ -41,7 +41,13 @@ class MycellarwinesController < ApplicationController
     @mycellarwine.varietal_id = params[:varietal_id]
     @mycellarwine.winery = params[:winery]
     @mycellarwine.bucket_list_wine = params[:bucket_list_wine]
-    @mycellarwine.image_id = params[:image_id]
+    if params[:image_id]
+      @mycellarwine.image_id = params[:image_id]
+    else
+      @mycellarwine.remote_image_id_url = params[:remote_image_id_url]
+    end
+
+
     @mycellarwine.user_id = params[:user_id].to_i
 
     save_status = @mycellarwine.save
