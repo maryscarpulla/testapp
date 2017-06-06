@@ -43,7 +43,7 @@ class VarietalsController < ApplicationController
 
     render("varietals/edit.html.erb")
   end
-
+/
   def update
     @varietal = Varietal.find(params[:id])
 

@@ -86,6 +86,10 @@ Rails.application.routes.draw do
   #------------------------------
 
   root to: "mycellarwines#index"
+  #-----------------------------------------
+  #Routes for Bucket List
+  get "/mycellarwines/bucketlist",:controller => "mycellarwines", :action => "bucket"
+
 
   # Routes for the Mycellarwine resource:
   # CREATE
@@ -109,6 +113,8 @@ Rails.application.routes.draw do
   #Routes for the API
   get "/winesearch/new",:controller => "wine_search", :action => "wine_search_form"
   get "/search_to_results",:controller => "wine_search", :action => "search_to_results"
+
+
 
 
 

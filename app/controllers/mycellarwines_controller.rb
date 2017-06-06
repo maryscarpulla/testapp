@@ -1,9 +1,24 @@
 class MycellarwinesController < ApplicationController
+
   def index
     # @mycellarwines = current_user.mycellarwines
     @mycellarwines = current_user.mycellarwines
     @varietals = Varietal.all
     render("mycellarwines/index.html.erb")
+  end
+
+  def bucket
+    @mycellarwine = current_user.mycellarwines
+    # @mycellarwine.wine_name = params[:wine_name]
+    # @mycellarwine.year = params[:year]
+    # @mycellarwine.price = params[:price]
+    # @mycellarwine.varietal_id = params[:varietal_id]
+    # @mycellarwine.winery = params[:winery]
+    # @mycellarwine.bucket_list_wine = params[:bucket_list_wine]
+    # @mycellarwine.image_id = params[:image_id]
+    # @mycellarwine.user_id = params[:user_id].to_i
+    #
+    # render("mycellarwines/bucket.html.erb")
   end
 
   def show
@@ -78,6 +93,7 @@ class MycellarwinesController < ApplicationController
       render("mycellarwines/edit.html.erb")
     end
   end
+
 
   def destroy
     @mycellarwine = Mycellarwine.find(params[:id])

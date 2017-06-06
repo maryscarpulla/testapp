@@ -7,6 +7,8 @@ class Mycellarwine < ApplicationRecord
   has_many :suggested_wines, :foreign_key => "wine_id", :dependent => :destroy
   has_many :wine_tag_pairs, :foreign_key => "tag_id", :dependent => :destroy
   belongs_to :varietal, :class_name => "Varietal", :foreign_key =>"varietal_id"
+  has_many :bucket_list_wine
+
   belongs_to :user
   validates :year, :length => { :minimum => 4, :maximum => 4 }
   validates :year, :presence => true
