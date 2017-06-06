@@ -88,6 +88,13 @@
       <%= f.text_field :varietal_varietal_name_cont, :class => "form-control", :placeholder => "Varietal varietal_name contains" %>
     </div>
 
+    <div class="form-group">
+      <%= f.label :bucket_list_wine_true, "Bucket List Wine" %>
+      <%= f.check_box :bucket_list_wine_true, include_hidden: false %>
+    </div>
+
+
+
     <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
     <a href="/mycellarwiness" class="btn btn-default btn-block mb-1">Clear filters</a>
@@ -124,6 +131,7 @@
         <td><%= mycellarwine.winery %></td>
         <td><%= mycellarwine.reviews %></td>
         <td><%= mycellarwine.bucket_list_wine %></td>
+
         <td>
 
           <a href="/mycellarwines/<%= mycellarwine.id %>" class="btn btn-primary">Show</a>
