@@ -47,6 +47,14 @@
       <td><input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= wine_hash["price"] %>">
       </td>
 
+      <div class="checkbox">
+        <label for="bucket_list_wine">
+          <input type="checkbox" id="bucket_list_wine" name="bucket_list_wine" value="1" <%= "checked" if @mycellarwine.bucket_list_wine %>>
+          Bucket list wine
+        </label>
+      </div>
+
+
       <td><button class="btn btn-success">
         Add to My Cellar
       </button></td>

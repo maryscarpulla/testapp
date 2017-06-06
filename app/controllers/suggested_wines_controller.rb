@@ -20,9 +20,9 @@ class SuggestedWinesController < ApplicationController
   def create
     @suggested_wine = SuggestedWine.new
     @suggested_wine.wine_id = params[:wine_id]
-    @suggested_wine.user_id_from = params[:user_id_from]
+    @suggested_wine.user_id_from = params[:user_id_from].to_i
 
-    @suggested_wine.user_id_to = params[:user_id_to]
+    @suggested_wine.user_id_to = params[:user_id_to].to_i
 
     save_status = @suggested_wine.save
 

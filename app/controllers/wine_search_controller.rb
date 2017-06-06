@@ -20,7 +20,9 @@ class WineSearchController < ApplicationController
     parsed_data = JSON.parse(open(url).read)
     @wines_from_api = parsed_data["wines"]
 
+
     render("wine_search_results.html.erb")
+
 
   end
 end

@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @review.errors.any? %>
-  <% @review.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @review.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -38,11 +38,9 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @review.user_id %>">
+        <input name="user_id" type = "hidden" value="<%= current_user.id%>">
+
       </div>
 
       <!-- Label and input for wine_id -->
@@ -50,8 +48,9 @@
         <label for="wine_id" class="control-label">
           Wine
         </label>
+        <%= select_tag(:wine_id, options_from_collection_for_select(current_user.mycellarwines, :id, :wine_name, @review.wine_id), :class => "form-control") %>
 
-        <input type="text" id="wine_id" name="wine_id" placeholder="Wine" class="form-control" value="<%= @review.wine_id %>">
+
       </div>
 
       <button class="btn btn-success">

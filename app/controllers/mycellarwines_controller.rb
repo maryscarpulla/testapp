@@ -41,7 +41,8 @@ class MycellarwinesController < ApplicationController
     @mycellarwine.varietal_id = params[:varietal_id]
     @mycellarwine.winery = params[:winery]
     @mycellarwine.bucket_list_wine = params[:bucket_list_wine]
-    if params[:image_id]
+
+if params[:image_id]
       @mycellarwine.image_id = params[:image_id]
     else
       @mycellarwine.remote_image_id_url = params[:remote_image_id_url]

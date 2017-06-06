@@ -9,30 +9,37 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+        <th>Image</th>
         <th>Wine Name</th>
         <th>Year</th>
         <th>Price</th>
         <th>Varietal</th>
         <th>Winery</th>
-        <th>Bucket List</th>
-        <th>Image</th>
+        <th>Rating</th>
+                <th>Bucket List</th>
         <th>Actions</th>
       </tr>
 
       <% @mycellarwines.each do |mycellarwine| %>
       <tr>
+        <td><img src = "<%= mycellarwine.image_id %>" class = "img-responsive"></td>
         <td><%= mycellarwine.wine_name %></td>
         <td><%= mycellarwine.year %></td>
         <td><%= mycellarwine.price %></td>
         <td><%= mycellarwine.varietal.varietal_name %></td>
+
         <td><%= mycellarwine.winery %></td>
+        <td><%= mycellarwine.reviews %></td>
         <td><%= mycellarwine.bucket_list_wine %></td>
-        <td><img src = "<%= mycellarwine.image_id %>" class = "img-responsive"></td>
         <td>
 
           <a href="/mycellarwines/<%= mycellarwine.id %>" class="btn btn-primary">Show</a>
           <a href="/mycellarwines/<%= mycellarwine.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_mycellarwine/<%= mycellarwine.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/reviews/new" class="btn btn-success">Add a Review</a>
+
+
+
         </td>
       </tr>
       <% end %>
