@@ -5,14 +5,26 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'pg', :group => :production
-gem 'rails_12factor', :group => :production
+#what we saw in the last day of class
+# gem 'pg', :group => :production
+# gem 'rails_12factor', :group => :production
+
+#what heroku deploy docs say to do
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', :group => :development
+# gem 'sqlite3', :group => :development
+group :development do
+  gem 'sqlite3'
+end
 # Use Puma as the app server
+
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
