@@ -24,26 +24,18 @@
           Wine
         </label>
 
-        <input type="text" id="wine_id" name="wine_id" placeholder="Wine" class="form-control" value="<%= @suggested_wine.wine_id %>">
+        <input type="text" id="wine_id" name="wine_id" placeholder="Wine" class="form-control" value="<%= @suggested_wine.wine.wine_name %>">
       </div>
 
       <!-- Label and input for user_id_from -->
       <div class="form-group">
         <label for="user_id_from" class="control-label">
-          User id from
+          From
         </label>
 
         <input type="text" id="user_id_from" name="user_id_from" placeholder="User id from" class="form-control" value="<%= @suggested_wine.user_id_from %>">
       </div>
 
-      <!-- Label and input for user_id_to -->
-      <div class="form-group">
-        <label for="user_id_to" class="control-label">
-          User id to
-        </label>
-
-        <input type="text" id="user_id_to" name="user_id_to" placeholder="User id to" class="form-control" value="<%= @suggested_wine.user_id_to %>">
-      </div>
 
       <button class="btn btn-warning">
         Update Suggested Wine

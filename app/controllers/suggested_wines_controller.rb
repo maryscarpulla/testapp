@@ -1,13 +1,18 @@
 class SuggestedWinesController < ApplicationController
   def index
     @suggested_wines = SuggestedWine.where(:user_id_to => current_user.id)
-
+    @mycellarwines = Mycellarwine.all
 
     render("suggested_wines/index.html.erb")
   end
 
   def show
     @suggested_wine = SuggestedWine.find(params[:id])
+    @suggested_wine.wine_id = params[:wine_id]
+    @suggested_wine.user_id_from = params[:user_id_from]
+    @suggested_wine.user_id_to = params[:user_id_to]
+    @mycellarwine = Mycellarwine.all
+
 
     render("suggested_wines/show.html.erb")
   end
@@ -15,12 +20,15 @@ class SuggestedWinesController < ApplicationController
   def new
     @suggested_wine = SuggestedWine.new
     @suggested_wine.wine_id = params[:wine_id]
+    @mycellarwine = Mycellarwine.new
 
     render("suggested_wines/new.html.erb")
   end
 
   def create
     @suggested_wine = SuggestedWine.new
+    @mycellarwine = Mycellarwine.new
+
     @suggested_wine.wine_id = params[:wine_id]
     @suggested_wine.user_id_from = params[:user_id_from].to_i
 

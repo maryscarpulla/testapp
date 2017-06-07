@@ -95,6 +95,7 @@ Rails.application.routes.draw do
 
   # Routes for the Mycellarwine resource:
   # CREATE
+  get "/mycellarwines/new/:id", :controller => "mycellarwines", :action => "new"
   get "/mycellarwines/new", :controller => "mycellarwines", :action => "new"
   post "/create_mycellarwine", :controller => "mycellarwines", :action => "create"
 
