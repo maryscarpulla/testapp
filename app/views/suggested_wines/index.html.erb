@@ -67,7 +67,10 @@
               <!-- Label and input for varietal_id -->
               <div class="form-group">
 
-                <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name, suggested_wine.wine.varietal_id), :class => "form-control") %>
+                <input type="hidden" id="varietal_id" name="varietal_id" placeholder="Varietal" class="form-control" value="<%= suggested_wine.wine.varietal_id %>">
+
+<!--
+                <%= select_tag(:varietal_id, options_from_collection_for_select(Varietal.all, :id, :varietal_name, suggested_wine.wine.varietal_id), :class => "form-control") %> -->
 
                 <!-- Label and input for price -->
                 <div class="form-group">
